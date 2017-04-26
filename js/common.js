@@ -24,6 +24,9 @@ $(document).ready(function(){
 	manager.add(Tap);
 	var deltaX = 0;
 	var deltaY = 0;
+	manager.on("tap",function(e){
+		console.log(e);
+	})
 	manager.on('panmove', function(e) {
 	  // do something cool
 	  var dX = deltaX + (e.deltaX);
@@ -32,21 +35,11 @@ $(document).ready(function(){
 	  $.Velocity.hook(navHD, 'translateY', dY + 'px');
 	});
 	manager.on('panend', function(e) {
-	  deltaX = deltaX + e.deltaX;
-	  deltaY = deltaY + e.deltaY;
-	});
-	var currentScale = 1;
-	function getRelativeScale(scale) {
-	  return scale * currentScale;
-	}
-	manager.on('pinchmove', function(e) {
-	  // do something cool
-	  var scale = getRelativeScale(e.scale);
-	  $.Velocity.hook(navHD, 'scale', scale);
-	});
-	manager.on('pinchend', function(e) {
-	  // cache the scale
-	  currentScale = getRelativeScale(e.scale);
-	  liveScale = currentScale;
+	  /*deltaX = deltaX + e.deltaX;
+	  deltaY = deltaY + e.deltaY;*/
+	  deltaX = 0;
+	  deltaY = 0;
+	  $.Velocity.hook(navHD, 'translateX', '0px');
+	  $.Velocity.hook(navHD, 'translateY', '0px');
 	});
 });
