@@ -1,15 +1,104 @@
 body{
-	background-color:#F9F9F9;
+	background-color:#EAEEEF;
 }
 .nav_head{
 	width: 100%;
 	text-align: center;
-	padding: .15rem 0;
-	border-bottom: 1px solid #e1e1e1;
+	padding: .2rem 0;
+	border-bottom: 1px solid #dedede;
 	color: #666;
-	background-color: #efefef;
+	background-color: #EAEEEF;
 }
 .nav_head .nav_con{
 	font-size: .2rem;
 	font-weight: 400;
+}
+.f_li{
+	padding: .2rem .12rem;
+	background-color: #FFF;
+	border-bottom: 1px solid #E6E9EF;
+	padding-bottom: .05rem;
+}
+.f_li .f_con{
+	font-size: .21rem;
+	padding-left: .32rem;
+	background: url("../images/icon_f.png") no-repeat left;
+	background-size: .25rem .25rem;
+	margin-bottom: .1rem; 
+	color: #000;
+}
+.f_li .operation{
+	position: relative;
+	height: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.f_li .operation a{
+	display: inline-block;
+	color: #666;
+	font-size: .2rem;
+	font-weight: 400;
+	padding: .15rem 0;
+	padding-left: .28rem;
+}
+.f_li .operation .reset_f{
+	background: url("../images/rename.png") no-repeat left;
+	background-size: .22rem .22rem;
+}
+.f_li .operation .edit_f{
+	background: url("../images/edit.png") no-repeat left;
+	background-size: .22rem .22rem;
+	margin-left: 1.2rem
+}
+.f_li .operation .delete_f{
+	float: right;
+	background: url("../images/trash.png") no-repeat left;
+	background-size: .22rem .22rem;
+}
+.popMask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+}
+.popMask .renameBox{
+	position: relative;
+	width: 90%;
+	height: auto;
+	margin-top: 15%;
+	margin-left: 5%;
+	border-radius: 3px;
+	background-color: #FFF;
+}
+.popMask .renameBox .pop_head{
+	text-align: center;
+	font-size: .2rem;
+	font-weight: 400;
+	padding: .2rem 0;
+	border-bottom: 1px solid #efefef;
+}
+.popMask .renameBox .pop_content{
+	padding: .1rem .2rem;
+}
+.popMask .renameBox .pop_content .pop_lb{
+	font-size: .2rem;
+	font-weight: 400;
+	color: #848484;
+	display: inline-block;
+}
+.popMask .renameBox .pop_content .pop_iptbox{
+	position: relative;
+	display: inline-block;
+	width: 75%;
+	margin-left: .2rem;
+	border-bottom: 1px solid #2d8fd9;
+}
+.pop_content .pop_iptbox .pop_ipt{
+	border: none;
+	font-size: .2rem;
+	line-height: .35rem;
+	padding-left: .1rem;
+	width: 100%;
 }

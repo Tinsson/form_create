@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/main.css">
 	<script src="./js/hammer.js"></script>
-	<script src="./js/zepto.js"></script>
+	<script src="./js/jquery.js"></script>
 	<script src="https://cdn.rawgit.com/julianshapiro/velocity/master/velocity.min.js"></script>
 	<script src="./js/common.js"></script>
 </head>
@@ -20,13 +20,49 @@
 	<div class="form_list">
 		<h1 id="" class="nav_head">
 			<span class="nav_con">全部表单</span>
+			<a href="javascript:;" class="create_new"></a>
 		</h1>
 		<ul class="f_ul">
-			<li class="f_li"></li>
-			<li class="f_li"></li>
-			<li class="f_li"></li>
-			<li class="f_li"></li>
+			<li class="f_li">
+				<p class="f_con">这是表单1</p>
+				<div class="operation">
+					<a href="javascript:;" class="reset_f">重命名</a>
+					<a href="javascript:;" class="edit_f">编辑</a>
+					<a href="javascript:;" class="delete_f">删除</a>
+				</div>
+			</li>
+			<li class="f_li">
+				<p class="f_con">这是表单2</p>
+				<div class="operation">
+					<a href="javascript:;" class="reset_f">重命名</a>
+					<a href="javascript:;" class="edit_f">编辑</a>
+					<a href="javascript:;" class="delete_f">删除</a>
+				</div>
+			</li>
+			<li class="f_li">
+				<p class="f_con">这是表单3</p>
+				<div class="operation">
+					<a href="javascript:;" class="reset_f">重命名</a>
+					<a href="javascript:;" class="edit_f">编辑</a>
+					<a href="javascript:;" class="delete_f">删除</a>
+				</div>
+			</li>
 		</ul>
+		<div class="popMask">
+			<div class="renameBox">
+				<span class="pop_close"></span>
+				<div class="pop_head">表单重命名</div>
+				<div class="pop_wrap">
+					<div class="pop_content">
+						<label class="pop_lb" for="">表单名</label>
+						<div class="pop_iptbox">
+							<input class="pop_ipt" type="text" placeholder="请输入表单名">
+						</div>
+					</div>
+					<div class="pop_button"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

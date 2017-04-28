@@ -1,9 +1,43 @@
+// jquery调用hammer
+(function(factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery', 'hammerjs'], factory);
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'), require('hammerjs'));
+    } else {
+        factory(jQuery, Hammer);
+    }
+}(function($, Hammer) {
+    function hammerify(el, options) {
+        var $el = $(el);
+        if(!$el.data("hammer")) {
+            $el.data("hammer", new Hammer($el[0], options));
+        }
+    }
+
+    $.fn.hammer = function(options) {
+        return this.each(function() {
+            hammerify(this, options);
+        });
+    };
+
+    // extend the emit method to also trigger jQuery events
+    Hammer.Manager.prototype.emit = (function(originalEmit) {
+        return function(type, data) {
+            originalEmit.call(this, type, data);
+            $(this.element).trigger({
+                type: type,
+                gesture: data
+            });
+        };
+    })(Hammer.Manager.prototype.emit);
+}));
+
 $(document).ready(function(){
 	// 控制rem的尺寸
 	var clientWid = document.body.clientWidth,
 	    doc = document.documentElement;
 	doc.style.fontSize = clientWid / 5 + "px";
-	console.log(clientWid);
 	$(window).resize(function(){
 		var clientWid = document.body.clientWidth,
 		    doc = document.documentElement;
@@ -42,4 +76,32 @@ $(document).ready(function(){
 	  $.Velocity.hook(navHD, 'translateX', '0px');
 	  $.Velocity.hook(navHD, 'translateY', '0px');
 	});
+
+
+
+	/*表单列表里操作*/
+	function slide_li(obj,height){
+		obj.find(".operation").animate({
+			height: height
+		},200);
+	}
+	$(".f_li").hammer().bind("tap",function(e){
+		var that = $(this);
+		if(that.find(".operation").is(":animated")){
+			return false;
+		}
+		if(that.hasClass("active")){
+			height = 0;
+			that.removeClass("active");
+		}else{
+			height = ".5rem";
+			that.addClass("active");
+			that.siblings().each(function(){
+				if($(this).hasClass("active")){
+					slide_li($(this),0);
+				}
+			})
+		}
+		slide_li(that,height);
+	})
 });
