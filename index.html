@@ -26,7 +26,8 @@
 			<li class="f_li">
 				<p class="f_con">这是表单1</p>
 				<div class="operation">
-					<a href="javascript:;" class="reset_f">重命名</a>
+					<input type="hidden" class="fid" name="fid" value="1"/>
+					<a href="javascript:;" class="rename_f">重命名</a>
 					<a href="javascript:;" class="edit_f">编辑</a>
 					<a href="javascript:;" class="delete_f">删除</a>
 				</div>
@@ -34,7 +35,8 @@
 			<li class="f_li">
 				<p class="f_con">这是表单2</p>
 				<div class="operation">
-					<a href="javascript:;" class="reset_f">重命名</a>
+					<input type="hidden" class="fid" name="fid" value="2"/>
+					<a href="javascript:;" class="rename_f">重命名</a>
 					<a href="javascript:;" class="edit_f">编辑</a>
 					<a href="javascript:;" class="delete_f">删除</a>
 				</div>
@@ -42,24 +44,32 @@
 			<li class="f_li">
 				<p class="f_con">这是表单3</p>
 				<div class="operation">
-					<a href="javascript:;" class="reset_f">重命名</a>
+					<input type="hidden" class="fid" name="fid" value="3">
+					<a href="javascript:;" class="rename_f">重命名</a>
 					<a href="javascript:;" class="edit_f">编辑</a>
 					<a href="javascript:;" class="delete_f">删除</a>
 				</div>
 			</li>
 		</ul>
-		<div class="popMask">
+		<div id="rename" class="popMask">
 			<div class="renameBox">
 				<span class="pop_close"></span>
 				<div class="pop_head">表单重命名</div>
 				<div class="pop_wrap">
+					<form id="rename_modify" action="">
 					<div class="pop_content">
 						<label class="pop_lb" for="">表单名</label>
 						<div class="pop_iptbox">
-							<input class="pop_ipt" type="text" placeholder="请输入表单名">
+							<input id="newname" class="pop_ipt" type="text" placeholder="请输入表单名">
+							<input type="hidden" id="oldname">
+							<input id="fid" type="hidden" name="fid"/>
 						</div>
 					</div>
-					<div class="pop_button"></div>
+					</form>
+					<div class="pop_button clearfix">
+						<a href="javascirpt:;" class="successBtn">确认</a>
+						<a href="javascirpt:;" class="cancelBtn">取消</a>
+					</div>
 				</div>
 			</div>
 		</div>

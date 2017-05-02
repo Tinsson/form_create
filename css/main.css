@@ -2,6 +2,7 @@ body{
 	background-color:#EAEEEF;
 }
 .nav_head{
+	position: relative;
 	width: 100%;
 	text-align: center;
 	padding: .2rem 0;
@@ -13,11 +14,23 @@ body{
 	font-size: .2rem;
 	font-weight: 400;
 }
+.nav_head .create_new{
+	position: absolute;
+	top: .1rem;
+	right: .1rem;
+	width: .45rem;
+	height: .45rem;
+	background: url("../images/create.png") no-repeat center;
+	background-size: cover;
+}
 .f_li{
 	padding: .2rem .12rem;
 	background-color: #FFF;
 	border-bottom: 1px solid #E6E9EF;
 	padding-bottom: .05rem;
+}
+.f_li.active{
+	border-color: #2D8FD9;
 }
 .f_li .f_con{
 	font-size: .21rem;
@@ -41,21 +54,23 @@ body{
 	padding: .15rem 0;
 	padding-left: .28rem;
 }
-.f_li .operation .reset_f{
+.f_li .operation .rename_f{
 	background: url("../images/rename.png") no-repeat left;
 	background-size: .22rem .22rem;
 }
 .f_li .operation .edit_f{
 	background: url("../images/edit.png") no-repeat left;
 	background-size: .22rem .22rem;
-	margin-left: 1.2rem
+	margin-left: 1.1rem
 }
 .f_li .operation .delete_f{
 	float: right;
 	background: url("../images/trash.png") no-repeat left;
 	background-size: .22rem .22rem;
 }
+/*重新填写表单信息*/
 .popMask{
+	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -101,4 +116,26 @@ body{
 	line-height: .35rem;
 	padding-left: .1rem;
 	width: 100%;
+}
+.popMask .pop_wrap .pop_button{
+	text-align: center;
+	padding: 10px 0;
+}
+.popMask .pop_button .successBtn{
+	float: left;
+	font-size: .2rem;
+	padding: 8px 18px;
+	margin-left: 1.2rem;
+	color: #fff;
+	background-color: #52B266;
+	border-radius: 5px;
+}
+.popMask .pop_button .cancelBtn{
+	float: right;
+	font-size: .2rem;
+	padding: 8px 18px;
+	margin-right: 1.2rem;
+	color: #fff;
+	background-color: #EC494E;
+	border-radius: 5px;
 }

@@ -85,23 +85,92 @@ $(document).ready(function(){
 			height: height
 		},200);
 	}
+	function addborder(obj,index){
+		if(index == 0){
+			$(".nav_head").css("border-color","#2D8FD9");
+		}else{
+			obj.prev().css("border-color","#2D8FD9");
+		}
+		obj.css("border-color","#2D8FD9");
+	}
+	function removeborder(obj,index){
+		if(index == 0){
+			$(".nav_head").css("border-color","#E6E9EF");
+		}else{
+			obj.prev().css("border-color","#E6E9EF");
+		}
+		obj.css("border-color","#E6E9EF");
+	}
 	$(".f_li").hammer().bind("tap",function(e){
 		var that = $(this);
+		var index = that.index();
 		if(that.find(".operation").is(":animated")){
 			return false;
 		}
 		if(that.hasClass("active")){
 			height = 0;
 			that.removeClass("active");
+			removeborder(that,index);
 		}else{
 			height = ".5rem";
-			that.addClass("active");
 			that.siblings().each(function(){
 				if($(this).hasClass("active")){
 					slide_li($(this),0);
+					$(this).removeClass("active");
+					removeborder($(this),$(this).index());
+				}
+			})
+			that.addClass("active");
+			addborder(that,index);
+		}
+		slide_li(that,height);
+	})
+	//重命名操作
+	$(".rename_f").hammer().bind("tap",function(){
+		var name = $(this).closest(".f_li").find(".f_con").text();
+		var fid = $(this).closest(".f_li").find(".fid").val();
+		$("#newname").val(name);
+		$("#oldname").val(name);
+		$("#fid").val(fid);
+		$("#rename").show();
+	})
+	$(".successBtn").hammer().bind("tap",function(){
+		var oldname = $("#oldname").val(),
+		    newname = $("#newname").val(),
+		    fid = $("#fid").val();
+		if(oldname == newname){
+			alert("与旧表单名相同，请再确认！");
+			return false;
+		}else{
+			$.ajax({
+				type: "post",
+				url: "",
+				data: {newname: newname,fid: fid},
+				dataType: "json",
+				success: function(d){
+					alert(d.msg);
+					window.location.reload();
 				}
 			})
 		}
-		slide_li(that,height);
+	})
+	$(".cancelBtn").hammer().bind("tap",function(){
+		$("#rename").hide();
+	})
+	//删除操作
+	$(".delete_f").hammer().bind("tap",function(){
+		var fid = $(this).closest(".f_li").find(".fid").val();
+		if(confirm("确认删除此表单？")){
+			$.ajax({
+				type: "post",
+				url: "",
+				data: {fid: fid},
+				dataType: "json",
+				success: function(d){
+					alert(d.msg);
+					window.location.reload();
+				}
+			})
+		}
 	})
 });
